@@ -15,8 +15,12 @@ class DraggableComponent extends Component {
     let currentDiv = this.state.currentDiv;
     let toDiv = this.state.toDiv;
     let currentEle;
+    let toEle;
+
     if (currentDiv !== toDiv) {
       currentEle = { ...divs[currentDiv] };
+      toEle = { ...divs[toDiv]};
+
       divs = divs.filter((val, idx) => {
         return idx !== currentDiv;
       });
@@ -28,7 +32,7 @@ class DraggableComponent extends Component {
       });
     }
     if (this.props?.onPosChange)
-      this.props.onPosChange(currentDiv, toDiv, currentEle);
+      this.props.onPosChange(currentDiv, toDiv, currentEle, toEle);
   };
 
   dragStart = (idx) => {
